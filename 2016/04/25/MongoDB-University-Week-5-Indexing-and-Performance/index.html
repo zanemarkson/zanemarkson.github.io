@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="This week we go over Indexes: 就是对某个field或subfield事先排序
+
+WiredTiger 不依赖于BSD上的mmap系统调用，它自己决定哪些page/file需要map到内存中，并且它还多一层压缩的操作；
+Create index : db.students">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Zheng (Zane) Ma">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="MongoDB University Week 5: Indexing and Performance"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Zane&#39;s Blog"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="/img/cocoa_cinnamon_pastry.jpg" />
+    
+
+    <!-- Title -->
+    
+    <title>MongoDB University Week 5: Indexing and Performance - Zane&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Zane's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">Archives</a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/cocoa_cinnamon_pastry.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>MongoDB University Week 5: Indexing and Performance</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                            Posted by Zheng (Zane) Ma on
+                        
+                        2016-04-25
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/MongoDB-University/">#MongoDB University</a> <a href="/tags/MongoDB/">#MongoDB</a> <a href="/tags/StudyNote/">#StudyNote</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>This week we go over <strong>Indexes</strong>: 就是对某个field或subfield事先排序</p>
+<ol>
+<li>WiredTiger 不依赖于BSD上的mmap系统调用，它自己决定哪些page/file需要map到内存中，并且它还多一层压缩的操作；</li>
+<li>Create index : <strong><kbd>db.students.creatIndex({“class”:1, “student_name”:-1});</kbd></strong>;</li>
+</ol>
+<ul>
+<li>How to query what indexes are existing for collection <kbd style="background-color:grey; color:black">students</kbd> : <strong><kbd>db.students.getIndexes()</kbd> </strong>;</li>
+<li>Remove index in collection <kbd style="background-color:grey; color:black">students</kbd> against key <kbd style="background-color:grey; color:black">“student_id”</kbd> which was in ascending order (<kbd style="background-color:grey; color:black">-1</kbd>) : <strong><kbd>db.students.dropIndexes({“student_id”: 1})</kbd> </strong>;</li>
+<li>如果 create 了 multi-key index, 本身是没啥问题的。但是，在一个 index 规则中只能有一个 key 是 array value的。也就是说，当 create 了以<kbd style="background-color:grey; color:black">“class”</kbd> 和 <kbd style="background-color:grey; color:black">“score”</kbd> 为key的 index 规则时，如果这个collection中有一个document的这两个key对应的value都是array的时候，index 的创建会失败;</li>
+<li>传说中的unique indexing: <strong><kbd>db.collection.creatIndex({“the-key”: 1}, {unique: true});</kbd></strong>;</li>
+<li>Sparse index - 当某些document缺失了某些key的时候，对于那些document来说，缺失了的key对应的value全都是<kbd style="color:black; background-color:grey">null</kbd>, 所以说unique index 会出错，所以需要sparse index: <strong><kbd>db.collection.creatIndex({“the-key”: 1}, {unique: true, sparse: true});</kbd></strong> 注意，如果是个普通的unique index的话，一旦创建，对于 <strong><kbd>db.collection.find().sort();</kbd></strong> 这种形式的sort是很有帮助的。但是，如果是sparse的index，再做sort还是会scan through 整个collection，还是比较慢。</li>
+<li><strong><kbd>.explain(“executionStats”);</kbd></strong> <br> <strong><kbd>.explain(“allPlansExecution”)</kbd></strong> : 运行plan optimizer并选出最佳的方案并输出所有尝试过了的plan的profile和那些rejected plan是怎么输掉的;</li>
+<li>Covered query: 当我们需要query的信息根本就只是index中存在的信息时；注意把_id给project掉并且明确地声明需要把index中使用的key是要project出来的。</li>
+<li><strong><strong>Planner在选择winning plan的时候每检查一个plan就要开一个thread；</strong></strong></li>
+<li><p>关于位置和地理信息(Geo-Spatial Info)<br><strong><kbd>db.geoCollection.ensureIndex({“location”:”2d”, “type”:1})</kbd></strong>,这时的type只是表明升降序；<br><strong><kbd>db.geoCollection.find({“location”:{$near:[50,50]}})</kbd></strong><br>当是标注地面上的信息的时候，改为<strong><kbd>“2dsphere”</kbd></strong>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// geo-query.js</span></span><br><span class="line">use m101;</span><br><span class="line">db.places.find(&#123;</span><br><span class="line">  <span class="string">"location"</span>: &#123;</span><br><span class="line">    $near: &#123;</span><br><span class="line">      $geometry: &#123;</span><br><span class="line">        type: <span class="string">"Point"</span>,</span><br><span class="line">        coordinates: [<span class="number">-122.166641</span>, <span class="number">37.4278925</span>] <span class="comment">// [logtitude(经度), latitude(纬度)]</span></span><br><span class="line">      &#125;, <span class="comment">// $geometry 的 value 是 geojson format</span></span><br><span class="line">      $maxDistance: <span class="number">2000</span> <span class="comment">//meter</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).pretty()</span><br></pre></td></tr></table></figure>
+<p>然后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo &lt; geo-query.js</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong><em>文字indexing</em></strong><br><strong><kbd>db.sentences.ensureIndex({‘words’:’text’})</kbd></strong>. ‘words’是本身这个collection中定义的key, ‘text’指的是这个index的type是text;<br><strong><kbd>db.sentences.find({$text: {$search: ‘dog’}})</kbd></strong>; MongoDB本身有一种叫做<code>$meta: &#39;textScore&#39;</code>的东西可以来给文本搜索排序。</p>
+</li>
+<li>打开profiler: <code>mongod --profile 1 --slowms 20</code> : 打开level 1的profiler，记录运行时间大于2ms 的 process；<br>查看log: `db.system.profile.find().pretty<br>在mongo shell里面也可以打开或者关闭profiling:<ul>
+<li>db.getProfilingStatus()</li>
+<li>db.getProfilingLevel()</li>
+<li>db.setProfilingStatus(1,40)</li>
+<li>db.setProfilingLevel(1,40)</li>
+<li>db.setProfilingStatus(0)</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+
+            <!-- Comments -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+
+
+            </div>
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://twitter.com/ZaneMarkson" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/zanemarkson/" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>
