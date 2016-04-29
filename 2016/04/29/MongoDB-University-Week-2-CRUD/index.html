@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="由于MongoDB 是document-based的，也就是说在query的时候find()里面pass进去什么json object都会被当作是query的选择条件。所以说如果有好多个选择条件，就pass进去一个好几个field的document(json object)就行了：
+1&amp;gt; db">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Zheng (Zane) Ma">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="MongoDB University Week 2: CRUD"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Zane&#39;s Blog"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="/img/cocoa_cinnamon_pastry.jpg" />
+    
+
+    <!-- Title -->
+    
+    <title>MongoDB University Week 2: CRUD - Zane&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Zane's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">Archives</a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/cocoa_cinnamon_pastry.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>MongoDB University Week 2: CRUD</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                            Posted by Zheng (Zane) Ma on
+                        
+                        2016-04-29
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/MongoDB-University/">#MongoDB University</a> <a href="/tags/MongoDB/">#MongoDB</a> <a href="/tags/StudyNote/">#StudyNote</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ol>
+<li><p>由于MongoDB 是document-based的，也就是说在query的时候<code>find()</code>里面pass进去什么json object都会被当作是query的选择条件。所以说如果有好多个选择条件，就pass进去一个好几个field的document(json object)就行了：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.movieDetails.find(&#123;<span class="string">"year"</span>:<span class="number">2009</span> , <span class="string">"genres"</span>:[<span class="string">"Drama"</span>]&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>db.movieDetails.find()</code>返回的是个”cursor”,其实就是个指针。如果不把<code>find</code>返回的值赋给谁的话，mongo shell会自动iterate through这个指针所指向的内存block并打印.</p>
+</li>
+<li><p>几个函数：</p>
+<ul>
+<li><p><kbd>next()</kbd></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = db.movieDetails.find();</span><br><span class="line">c.next()</span><br></pre></td></tr></table></figure>
+<p>相当于C里面:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> jsonObject *c ;</span><br><span class="line"><span class="comment">/*struct jsonObject *find() */</span></span><br><span class="line">c = find( ... ) ;</span><br><span class="line">*( c ++ ) ...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><kbd>hadNext()</kbd></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = db.movieDetails.find();</span><br><span class="line">c.haxNext()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><kbd>objLeftInBatch()</kbd></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.objLeftInBatch()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Projection<br>Projection就是说<code>find</code>在返回的时候不要全部fields都返回，我只关心其中一部分。于是在调用<code>find()</code>的时候给两个arguments。第一个就是搜索条件，第二个是projection条件:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.movieDetails.find(&#123; <span class="string">"rated"</span>: <span class="string">"PG"</span> &#125; , &#123; <span class="string">"title"</span> : <span class="number">1</span> , <span class="string">"_id"</span> : <span class="number">0</span> &#125;).pretty()</span><br></pre></td></tr></table></figure>
+<p><code>1</code>和<code>0</code>是在声明哪个field要看(<code>1</code>)哪个不要看(<code>0</code>).对于没声明的fields，要看现在都声明了什么。如果已声明的filed里面有<code>1</code>的，那么就未声明的fields除了<code>_id</code>外默认为<code>0</code>,<code>_id</code>如果不explicitly声明为<code>0</code>的话，默认为<code>1</code>；如果已声明的field里只有<code>0</code>的，那么所有其他没有声明的fields都默认是<code>1</code>.</p>
+</li>
+<li><p>当我们需要查询某个filed等于某个value的时候，我们就像上面说过的那么写，基本上就是</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.collection.find(&#123; <span class="string">"field"</span> : <span class="string">"value"</span> &#125;)</span><br></pre></td></tr></table></figure>
+<p>那如果是不等式搜索呢？不等式搜索是这样</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.collections.find(&#123; <span class="string">"field"</span> : &#123; $operator : value &#125; &#125; , &#123; <span class="string">"title"</span> : <span class="number">1</span> , <span class="string">"_id"</span> : <span class="number">0</span> &#125;).pretty()</span><br></pre></td></tr></table></figure>
+<p>这就好像在说<code>{}</code>是在取值一样。For example</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;  db.movieDetails.find(&#123; <span class="string">"tomato.meter"</span> : &#123; $gte: <span class="number">95</span> , $lte: <span class="number">120</span> &#125; &#125; , &#123; <span class="string">"title"</span>: <span class="number">1</span> , <span class="string">"runtime"</span>: <span class="number">1</span> , <span class="string">"_id"</span> : <span class="number">0</span> &#125;).pretty()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><kbd> $operators </kbd>: <ul>
+<li><code>$eq</code> , <code>$ne</code> , <code>$neq</code> , <code>$gt</code> … </li>
+<li><code>$in [ op1 , op2 ]</code> </li>
+<li><code>$all [ req1 , req2 ]</code> </li>
+<li><code>$or [ &quot;f1&quot; : v1 , &quot;f2&quot; : v2 ]</code></li>
+<li><code>$nin</code></li>
+<li><code>$exists : true</code></li>
+<li><code>$not</code></li>
+</ul>
+</li>
+<li><p>关于<kbd>$and</kbd><br>通常其实没大必要用，因为就像第1点中所说的那样，把一般性的”等式”或”不等式”条件写到一个json object中pass给<code>find()</code>就行了，但是如果是要对某一个filed加很复杂的条件限制时<em>( 如果只是多个等式或不等式条件的话，类似<code>.find({ &quot;field&quot; : { $gte : lowerBound , $lte : upperBound } })</code>这种写法也是可以的 )</em>，由于一个json object里面key不能重复，所以没法用简单json object形式写限制条件，所以需要用到<kbd>$and</kbd>.</p>
+</li>
+<li><p><kbd>$elematch</kbd>适用于某个filed在db里是array的情形。如果不用<code>$elematch</code>，那么这个field(是个array)中不管是不是同一个element，只要能找到即便是不同的几个element可以分别让搜索条件满足，这个document就会被query出来，这个不是很合理。。。所以要用到<code>$elematch</code>，去保证必须有element能同时满足所有的搜索条件。 这个用法在<a href="https://university.mongodb.com/courses/MongoDB/M101JS/2016_March/courseware/Week_5_Indexes_and_Performance/52aa1ff8e2d4232c54a18a89" target="_blank" rel="external"><strong>第五章关于index的部分有重复讲到</strong></a></p>
+</li>
+<li><p><code>$updateOne</code>会更新(修改)第一个被找到的document</p>
+</li>
+<li>MongoDB University Week 2 Challenge Problem 1 :<br>Solution : 这里先用”genres”做个例子。思路看<a href="https://docs.mongodb.org/manual/tutorial/query-documents/#match-an-array-element" target="_blank" rel="external">这里</a><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.movieDetails.find(&#123; $or : [ &#123; <span class="string">"genres"</span> : <span class="string">"Comedy"</span> &#125; , &#123; <span class="string">"genres"</span> : <span class="string">"Crime"</span> &#125; ] &#125; , &#123; title : <span class="number">1</span> , _id : <span class="number">0</span> , genres : <span class="number">1</span> &#125;).count()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+            </div>
+
+            <!-- Comments -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+
+
+            </div>
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://twitter.com/ZaneMarkson" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/zanemarkson/" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>
