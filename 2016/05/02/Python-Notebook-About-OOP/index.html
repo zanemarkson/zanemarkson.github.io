@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="@property 可以实现在给某object的某属性动态赋值时做一些额外的（诸如检查新赋的值是否valid这种）操作，还可以把某些属性修改成“只读”。详见廖雪峰网站
+
+定义类的时候在 class myClass(object): 或者 class myClass( theParentClass )">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Zheng (Zane) Ma">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Python Notebook: About OOP"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Zane&#39;s Blog"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="/img/cocoa_cinnamon_pastry.jpg" />
+    
+
+    <!-- Title -->
+    
+    <title>Python Notebook: About OOP - Zane&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Zane's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">Archives</a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/cocoa_cinnamon_pastry.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Python Notebook: About OOP</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                            Posted by Zheng (Zane) Ma on
+                        
+                        2016-05-02
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Python/">#Python</a> <a href="/tags/OOP/">#OOP</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ol>
+<li><p>@property 可以实现在给某object的某属性动态赋值时做一些额外的（诸如检查新赋的值是否valid这种）操作，还可以把某些属性修改成“只读”。<a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386820062641f3bcc60a4b164f8d91df476445697b9e000" target="_blank" rel="external">详见廖雪峰网站</a></p>
+</li>
+<li><p>定义类的时候在 <code>class myClass(object):</code> 或者 <code>class myClass( theParentClass ):</code> 之后可以直接添加用单引号括起来的字符串，是类帮助字符串。</p>
+</li>
+<li><p>Python 定义函数的时候</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">( *args , **kw )</span>:</span></span><br><span class="line">    <span class="keyword">for</span> arg <span class="keyword">in</span> args:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'[%s]'</span> % arg</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">print</span> kw</span><br><span class="line"></span><br><span class="line">kwlist = &#123;<span class="string">'city'</span>: <span class="string">'Beijing'</span>, <span class="string">'job'</span>: <span class="string">'Engineer'</span>&#125;</span><br><span class="line">func( <span class="string">'first'</span> , <span class="string">'second'</span> , **kwlist )</span><br></pre></td></tr></table></figure>
+<p><code>*args</code> 是可变参数，<code>**kw</code> 是关键字参数。传递关键字参数的时候也可以</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func( <span class="string">'first'</span> , <span class="string">'second'</span> , gender=<span class="string">'M'</span>, job=<span class="string">'Engineer'</span> )</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Decorator, 装饰器. 是为了能够在不修改函数(对象)定义的前提下，在runtime时给函数(对象)增加功能。本质上是一个返回函数的高阶函数。所以说就是先定义一个返回函数的高阶函数，然后在你需要“装饰”的函数(对象)前面写个 <code>@myDecorator</code>. 比如：</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kw)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'call %s():'</span> % func.__name__</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kw)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line">    </span><br><span class="line"><span class="meta">@log</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">now</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">'2013-12-25'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我们是不可以像在 javascript 中那么自由地给 object 绑定属性和方法的。比如现在定义一个类：</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">( object )</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>然后创造属于这个类的一个 instance:<br>    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s = Student() <span class="comment"># Student这个类没有__init__(self,*args,**kw)来接收初始化参数，所以创造s这个实例时不用传入参数</span></span><br></pre></td></tr></table></figure></p>
+<p>这之后绑定新属性比较简单，直接：<br>    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.name = <span class="string">'Michael'</span></span><br></pre></td></tr></table></figure></p>
+<p>就可以了。但是要是想绑定新的方法就比较麻烦，需要：<br>    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_age</span><span class="params">( self , age )</span>:</span></span><br><span class="line">    self.age = age</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'My age is %d'</span> % age</span><br><span class="line"><span class="keyword">from</span> types <span class="keyword">import</span> MethodType</span><br><span class="line">s.set_age = MethodType( set_age , s , Student )</span><br></pre></td></tr></table></figure></p>
+<p>如果是给 class 绑定新方法，稍有不同：<br>    <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_score</span><span class="params">( self , score )</span>:</span></span><br><span class="line">    self.score = score</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'My score is %d'</span> % score</span><br><span class="line"><span class="keyword">from</span> types <span class="keyword">import</span> MethodType</span><br><span class="line">s.set_score = MethodType( set_score , <span class="keyword">None</span> , Student )</span><br></pre></td></tr></table></figure></p>
+<p>这之后即使是之前定义的某个属于 Student 类的实例也是可以使用<code>set_score</code> 这个方法的。</p>
+<ol>
+<li>关于 <code>@property</code> 和 <code>***.setter</code>, 是针对重新对某属性赋值的时候有可能需要对新赋的值进行 validation 而定义一整个方法又太烦而产生的。当我们需要定义某个属性 <code>score</code> 的时候，如果先写个 <code>@score.setter</code>, 就可以不定义属性而定义一个叫 <code>score</code> 的方法，在方法中做 validation 或其他操作然后把最后确定要定义的那个值付给一个叫别的名字的属性，比如说叫 <code>_score</code>, 这样一来 validation 就没问题了。但是这样的话值赋给了别的属性读的时候怎么办呢？办法是再定义一次 <code>score</code> 这个方法，这一次前面写上 <code>@property</code>, 把 <code>_score</code> 的值 return 出来，这样“读”和“写”就都没有问题了。例子： <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@property</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">score</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> self._score</span><br><span class="line"></span><br><span class="line"><span class="meta">@score.setter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">score</span><span class="params">(self, value)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> isinstance(value, int):</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">'score must be an integer!'</span>)</span><br><span class="line">    <span class="keyword">if</span> value &lt; <span class="number">0</span> <span class="keyword">or</span> value &gt; <span class="number">100</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">'score must between 0 ~ 100!'</span>)</span><br><span class="line">    self._score = value</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+            </div>
+
+            <!-- Comments -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+
+
+            </div>
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://twitter.com/ZaneMarkson" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/zanemarkson/" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>
