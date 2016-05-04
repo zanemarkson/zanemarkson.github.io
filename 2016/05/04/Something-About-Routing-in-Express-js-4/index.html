@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="从Express 4开始，完整的建立routing大概是这样的：
+12345678910111213141516171819var express = require(&#39;express&#39;);var app = express();var port = process.env.PORT || 8080">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Zheng (Zane) Ma">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Something About Routing in Express.js 4"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Zane&#39;s Blog"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="/img/candybud.newyork.jpg" />
+    
+
+    <!-- Title -->
+    
+    <title>Something About Routing in Express.js 4 - Zane&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Zane's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">Archives</a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/candybud.newyork.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Something About Routing in Express.js 4</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                            Posted by Zheng (Zane) Ma on
+                        
+			    2016-05-04
+
+			    Cover Photo: <a href="https://www.instagram.com/candybud/?hl=en">@candybud</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Node-js/">#Node.js</a> <a href="/tags/Express-js/">#Express.js</a> <a href="/tags/MEAN/">#MEAN</a> <a href="/tags/Traps/">#Traps</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ol>
+<li><p><a name="item1"></a>从Express 4开始，完整的建立routing大概是这样的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"><span class="keyword">var</span> port = process.env.PORT || <span class="number">8080</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> router = express.Router(); <span class="comment">//返回一个router object</span></span><br><span class="line">   </span><br><span class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    res.send(<span class="string">'im the home page!'</span>);  </span><br><span class="line">    next();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// about page route (http://localhost:8080/about)</span></span><br><span class="line">router.get(<span class="string">'/about'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    res.send(<span class="string">'im the about page!'</span>); </span><br><span class="line">    next()</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// apply the routes to our application</span></span><br><span class="line">app.use(<span class="string">'/'</span>, router);</span><br></pre></td></tr></table></figure>
+<p>这个过程中就是完整定义一个router object，也就是所谓mini-app，然后当作一个callback function 一样mount在了根目录下；</p>
+</li>
+<li><p>上面的code中，没看见</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var http = require(http);</span><br><span class="line">var s = http.creatServer();</span><br></pre></td></tr></table></figure>
+<p>是因为在express中，</p>
+<blockquote>
+<p>The <kbd>app</kbd> returned by <kbd>express()</kbd> is in fact a JavaScript Function, designed to be passed to Node’s HTTP servers as a callback to handle requests. This makes it easy to provide both HTTP and HTTPS versions of your app with the same code base, as the app does not inherit from these (it is simply a callback):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var https = require(&apos;https&apos;);</span><br><span class="line">var http = require(&apos;http&apos;);</span><br><span class="line">var app = express();</span><br><span class="line">http.createServer(app).listen(80);</span><br><span class="line">https.createServer(options, app).listen(443);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><a href="http://expressjs.com/en/api.html#app.listen" target="_blank" rel="external">详见这里</a>. 另外从链接里也能看出来，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var app = express();</span><br><span class="line">app.listen(3000);</span><br></pre></td></tr></table></figure>
+<p>也是可以的，就是说<kbd>app.listen(PORT)</kbd>也是会返回一个httpServer object 的；</p>
+</li>
+<li><p><a href="#item1">1</a> 中是完整地定义了<kbd>router</kbd>。当然也可以把<kbd>router</kbd>定义部分挪到一个单独的<kbd>.js</kbd>文件中然后再<kbd>require</kbd>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var app = express();</span><br><span class="line">var firstRouter = require(&apos;./firstRouter&apos;);</span><br><span class="line">app.use(&apos;/&apos;, firstRouter);</span><br></pre></td></tr></table></figure>
+<p>在<kbd>firstRouter.js</kbd>中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var router = express.Router(); //返回一个router object</span><br><span class="line"></span><br><span class="line"> router.get(&apos;/&apos;, function(req, res, next) &#123;</span><br><span class="line">     res.send(&apos;im the home page!&apos;);  </span><br><span class="line">     next();</span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line"> // about page route (http://localhost:8080/about)</span><br><span class="line"> router.get(&apos;/about&apos;, function(req, res, next) &#123;</span><br><span class="line">     res.send(&apos;im the about page!&apos;); </span><br><span class="line">     next()</span><br><span class="line"> &#125;);</span><br><span class="line">module.exports = router;</span><br></pre></td></tr></table></figure>
+<h2 id="注意！定制好了的router-object-就相当于一个middleware，-而middleware-本质上就是函数object"><a href="#注意！定制好了的router-object-就相当于一个middleware，-而middleware-本质上就是函数object" class="headerlink" title="注意！定制好了的router object 就相当于一个middleware， 而middleware 本质上就是函数object"></a><span style="color:red"><strong><em>注意！定制好了的router object 就相当于一个middleware， 而middleware 本质上就是函数object</em></strong></span></h2><p>除了这样定义外还可以用一个shortcut:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var app = express();</span><br><span class="line"></span><br><span class="line">app.route(&apos;/events&apos;)</span><br><span class="line">.all(function(req, res, next) &#123;</span><br><span class="line">  // runs for all HTTP verbs first</span><br><span class="line">  // think of it as route specific middleware!</span><br><span class="line">&#125;)</span><br><span class="line">.get(function(req, res, next) &#123;</span><br><span class="line">  res.json(...);</span><br><span class="line">&#125;)</span><br><span class="line">.post(function(req, res, next) &#123;</span><br><span class="line">  // maybe add a new event...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>使用<kbd>app.route()</kbd>可以对一个single route进行定义，chainning写法，还挺好看；</p>
+</li>
+<li><p>由于Expess 4.x推出这个router功能就是为了可以让每一个router object可以拿来执行一定的路由功能，而且能随插随用，independent of mount path，于是乎 it makes sense that router 中定义的’path’实际上是相对于 mount path 而言的；</p>
+</li>
+<li>从Express 4.x 开始，router的http方法们 (<kbd>app.use, app.get, app.post …</kbd>) 可以接带参数的path了, <a href="http://expressjs.com/en/4x/api.html#router.param" target="_blank" rel="external">看这儿</a>;</li>
+</ol>
+
+            </div>
+
+            <!-- Comments -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+
+
+            </div>
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://twitter.com/ZaneMarkson" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/zanemarkson/" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>
