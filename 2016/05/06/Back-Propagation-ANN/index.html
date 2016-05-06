@@ -11,7 +11,7 @@
     <!--Description-->
     
         <meta name="description" content="The error function $\delta^{\left(l\right)}_j$ 是 某一个traning example 在第 $l$ 层第 $j$ 个node 上产生的 error；
-{&amp;#37; math \delta^{\left(L\right)}_j\;=\;a^{\left">
+Here {&amp;#37; math \delta^{\left(L\right)}_j\;=\;a^{">
     
 
     <!--Author-->
@@ -152,7 +152,7 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <ol>
 <li>The error function $\delta^{\left(l\right)}_j$ 是 某一个traning example 在第 $l$ 层第 $j$ 个node 上产生的 error；</li>
-<li>{&#37; math \delta^{\left(L\right)}_j\;=\;a^{\left(L\right)}_j-y<em>j\;=\;\left(h^{\left(L\right)}</em>{\theta}\left(\vec{x}^{\left(L-1\right)}\right)\right)_j-y_j %} ,是最后在输出层上产生的error，从这里error function 往回propagate；</li>
+<li>Here {&#37; math \delta^{\left(L\right)}_j\;=\;a^{\left(L\right)}_j-y<em>j\;=\;\left(h^{\left(L\right)}</em>{\theta}\left(\vec{x}^{\left(L-1\right)}\right)\right)_j-y_j %} ,是最后在输出层上产生的error，从这里error function 往回propagate；</li>
 <li>在Back-Propagation中，$$\vec{\delta}^{\left(l-1\right)}=\left(\boldsymbol{\Theta}^{\left(l-1\right)}\right)^{T}\vec{\delta}^{\left(l\right)}\cdot<em>\vec{g}’\left(\vec{z}^{\left(l-1\right)}\right)$$ $$\vec{g}’\left(\vec{z}^{\left(l-1\right)}\right)=\vec{a}^{\left(l-1\right)}\cdot</em>\left(1-\vec{a}^{\left(l-1\right)}\right)$$这里面没有$\vec{\delta}^{\left(1\right)}$ 因为第1层就是输入层。所以，计算某一个training example在某一层上的error function， 需要的是:<ul>
 <li>当前层的 activation function 值 $\vec{a}^{\left(l-1\right)}$;</li>
 <li>从当前层propagate到下一层时使用的的系数矩阵 $\boldsymbol{\Theta}^{\left(l-1\right)}$；</li>
