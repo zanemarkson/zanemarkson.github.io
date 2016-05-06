@@ -10,6 +10,9 @@
 
     <!--Description-->
     
+        <meta name="description" content="The error function $\delta^{\left(l\right)}_j$ 是 某一个traning example 在第 $l$ 层第 $j$ 个node 上产生的 error；
+$\delta^{\left(L\right)}_j\;=\;a^{\left(L\right)}_">
+    
 
     <!--Author-->
     
@@ -17,6 +20,8 @@
     
 
     <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Back-Propagation ANN"/>
     
 
     <!--Open Graph Site Name-->
@@ -29,7 +34,7 @@
 
     <!-- Title -->
     
-    <title>Zane&#39;s Blog</title>
+    <title>Back-Propagation ANN - Zane&#39;s Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -96,155 +101,78 @@
 
     <!-- Main Content -->
     <!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
 <header class="intro-header" style="background-image: url('/img/myOffice.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Zane's Blog</h1>
-                    <hr class="small">
-                    <span class="subheading">For All The Things That Matter In Life</span>
+                <div class="post-heading">
+                    <h1>Back-Propagation ANN</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                            Posted by Zheng (Zane) Ma on
+                        
+                        2016-05-06
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
-                <div class="post-preview">
-    <a href="/2016/05/06/Back-Propagation-ANN/">
-        <h2 class="post-title">
-            Back-Propagation ANN
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-            Posted by Zheng (Zane) Ma on
-        
-        2016-05-06
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2016/05/04/Something-About-Routing-in-Express-js-4/">
-        <h2 class="post-title">
-            Something About Routing in Express.js 4
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-            Posted by Zheng (Zane) Ma on
-        
-        2016-05-04
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2016/05/02/Python-Notebook-About-Numpy-Scipy/">
-        <h2 class="post-title">
-            Python Notebook: About Numpy & Scipy
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-            Posted by Zheng (Zane) Ma on
-        
-        2016-05-02
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2016/05/02/Python-Notebook-About-OOP/">
-        <h2 class="post-title">
-            Python Notebook: About OOP
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-            Posted by Zheng (Zane) Ma on
-        
-        2016-05-02
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2016/04/29/MongoDB-University-Week-2-CRUD/">
-        <h2 class="post-title">
-            MongoDB University Week 2: CRUD
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-            Posted by Zheng (Zane) Ma on
-        
-        2016-04-29
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2016/04/26/AngularJS-1-Module-Controller/">
-        <h2 class="post-title">
-            AngularJS 1: Module & Controller
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-            Posted by Zheng (Zane) Ma on
-        
-        2016-04-26
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2016/04/25/MongoDB-University-Week-5-Indexing-and-Performance/">
-        <h2 class="post-title">
-            MongoDB University Week 5: Indexing and Performance
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-            Posted by Zheng (Zane) Ma on
-        
-        2016-04-25
-    </p>
-</div>
-<hr>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Machine-Learning/">#Machine Learning</a> <a href="/tags/Artifical-Neural-Network/">#Artifical Neural Network</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
 
-            <ul class="pager">
-    
-    
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ol>
+<li>The error function $\delta^{\left(l\right)}_j$ 是 某一个traning example 在第 $l$ 层第 $j$ 个node 上产生的 error；</li>
+<li>$\delta^{\left(L\right)}_j\;=\;a^{\left(L\right)}_j-y<em>j\;=\;\left(h^{\left(L\right)}</em>{\theta}\left(\vec{x}^{\left(L-1\right)}\right)\right)_j-y_j$, 是最后在输出层上产生的error，从这里error function 往回propagate；</li>
+<li>在Back-Propagation中，$$\vec{\delta}^{\left(l-1\right)}=\left(\boldsymbol{\Theta}^{\left(l-1\right)}\right)^{T}\vec{\delta}^{\left(l\right)}\cdot<em>\vec{g}’\left(\vec{z}^{\left(l-1\right)}\right)$$ $$\vec{g}’\left(\vec{z}^{\left(l-1\right)}\right)=\vec{a}^{\left(l-1\right)}\cdot</em>\left(1-\vec{a}^{\left(l-1\right)}\right)$$这里面没有$\vec{\delta}^{\left(1\right)}$ 因为第1层就是输入层。所以，计算某一个training example在某一层上的error function， 需要的是:<ul>
+<li>当前层的 activation function 值 $\vec{a}^{\left(l-1\right)}$;</li>
+<li>从当前层propagate到下一层时使用的的系数矩阵 $\boldsymbol{\Theta}^{\left(l-1\right)}$；</li>
+<li>后一层的 error function :  $\vec{\delta}^{\left(l\right)}$;</li>
 </ul>
+</li>
+<li>所以在对一个完整的 training set 进行优化时，loop through 每一个 example 去计算 $\boldsymbol{\Delta}^{\left(l\right)}<em>{ij}$ 和 $$\boldsymbol{D}</em>{ij}^{\left(l\right)}=\begin{cases}\frac{1}{m}\boldsymbol{\Delta}^{\left(l\right)}<em>{ij}+\lambda\boldsymbol{\Theta}^{\left(l\right)}</em>{ij}, &amp;\;\text{if}\;j\neq0\ \frac{1}{m}\boldsymbol{\Delta}^{\left(l\right)}<em>{ij}, &amp;\;\text{if}\;j=0\end{cases}$$ 因为对于一个完整的 training set， 整体的 cost function $\boldsymbol{J}\left(\boldsymbol{\Theta}\right)$ 对某一层的系数矩阵 $\boldsymbol{\Theta}^{\left(l\right)}$ 的偏导数 $$\frac{\partial}{\partial \Theta^{l}</em>{i,j}}\boldsymbol{J}\left(\boldsymbol{\Theta}\right)=\boldsymbol{D}_{ij}^{\left(l\right)}$$</li>
+</ol>
+
+            </div>
+
+            <!-- Comments -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+
+
+            </div>
         </div>
     </div>
-</div>
-
-
+</article>
 
     <!-- Footer -->
     <hr />
