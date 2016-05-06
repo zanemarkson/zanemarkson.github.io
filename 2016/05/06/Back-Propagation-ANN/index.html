@@ -29,7 +29,7 @@ Here $\delta^{\left(L\right)}_j\;=\;a^{\left(L\rig">
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content="/img/candybud.ciemas1.jpg" />
     
 
     <!-- Title -->
@@ -103,7 +103,7 @@ Here $\delta^{\left(L\right)}_j\;=\;a^{\left(L\rig">
     <!-- Page Header -->
 <!-- Set your background image for this header in your post front-matter: cover -->
 
-<header class="intro-header" style="background-image: url('/img/myOffice.jpg')">
+<header class="intro-header" style="background-image: url('/img/candybud.ciemas1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -113,7 +113,7 @@ Here $\delta^{\left(L\right)}_j\;=\;a^{\left(L\rig">
                     <span class="meta">
                         <!-- Date and Author -->
                         
-                            Posted by Zheng (Zane) Ma on
+                            Posted by Zheng (Zane) Ma || Photo By <a href='https://www.instagram.com/candybud/?hl=en'>@candybud</a> || on
                         
                         2016-05-06
                     </span>
@@ -152,15 +152,20 @@ Here $\delta^{\left(L\right)}_j\;=\;a^{\left(L\rig">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <ol>
 <li>The error function $\delta^{\left(l\right)}_j$ 是 某一个traning example 在第 $l$ 层第 $j$ 个node 上产生的 error；</li>
-<li>Here $\delta^{\left(L\right)}_j\;=\;a^{\left(L\right)}_j-y<em>j\;=\;\left(h^{\left(L\right)}</em>{\theta}\left(\vec{x}^{\left(L-1\right)}\right)\right)_j-y_j$ , 是最后在输出层上产生的error，从这里error function 往回propagate；</li>
-<li>在Back-Propagation中，$$\vec{\delta}^{\left(l-1\right)}=\left(\boldsymbol{\Theta}^{\left(l-1\right)}\right)^{T}\vec{\delta}^{\left(l\right)}\cdot<em>\vec{g}’\left(\vec{z}^{\left(l-1\right)}\right)$$ $$\vec{g}’\left(\vec{z}^{\left(l-1\right)}\right)=\vec{a}^{\left(l-1\right)}\cdot</em>\left(1-\vec{a}^{\left(l-1\right)}\right)$$这里面没有$\vec{\delta}^{\left(1\right)}$ 因为第1层就是输入层。所以，计算某一个training example在某一层上的error function， 需要的是:<ul>
+<li>Here <span>$\delta^{\left(L\right)}_j\;=\;a^{\left(L\right)}_j-y_j\;=\;\left(h^{\left(L\right)}_{\theta}\left(\vec{x}^{\left(L-1\right)}\right)\right)_j-y_j$</span><!-- Has MathJax --> , 是最后在输出层上产生的error，从这里error function 往回propagate；</li>
+<li>在Back-Propagation中,<span>$$\vec{\delta}^{\left(l-1\right)}=\left(\boldsymbol{\Theta}^{\left(l-1\right)}\right)^{T}\vec{\delta}^{\left(l\right)}\cdot*\vec{g}&apos;\left(\vec{z}^{\left(l-1\right)}\right) \\
+\vec{g}&apos;\left(\vec{z}^{\left(l-1\right)}\right)=\vec{a}^{\left(l-1\right)}\cdot*\left(1-\vec{a}^{\left(l-1\right)}\right)$$</span><!-- Has MathJax -->
+这里面没有$\vec{\delta}^{\left(1\right)}$ 因为第1层就是输入层。所以，计算某一个training example在某一层上的error function， 需要的是:<ul>
 <li>当前层的 activation function 值 $\vec{a}^{\left(l-1\right)}$;</li>
 <li>从当前层propagate到下一层时使用的的系数矩阵 $\boldsymbol{\Theta}^{\left(l-1\right)}$；</li>
 <li>后一层的 error function :  $\vec{\delta}^{\left(l\right)}$;</li>
 </ul>
 </li>
-<li>所以在对一个完整的 training set 进行优化时，loop through 每一个 example 去计算 $\boldsymbol{\Delta}^{\left(l\right)}<em>{ij}$ 和 $$\boldsymbol{D}</em>{ij}^{\left(l\right)}=\begin{cases}\frac{1}{m}\boldsymbol{\Delta}^{\left(l\right)}<em>{ij}+\lambda\boldsymbol{\Theta}^{\left(l\right)}</em>{ij}, &amp;\;\text{if}\;j\neq0\ \frac{1}{m}\boldsymbol{\Delta}^{\left(l\right)}<em>{ij}, &amp;\;\text{if}\;j=0\end{cases}$$ 因为对于一个完整的 training set， 整体的 cost function $\boldsymbol{J}\left(\boldsymbol{\Theta}\right)$ 对某一层的系数矩阵 $\boldsymbol{\Theta}^{\left(l\right)}$ 的偏导数 $$\frac{\partial}{\partial \Theta^{l}</em>{i,j}}\boldsymbol{J}\left(\boldsymbol{\Theta}\right)=\boldsymbol{D}_{ij}^{\left(l\right)}$$</li>
+<li>所以在对一个完整的 training set 进行优化时，loop through 每一个 example 去计算 <span>$\boldsymbol{\Delta}^{\left(l\right)}_{ij}$</span><!-- Has MathJax --><span>$\boldsymbol{D}_{ij}^{\left(l\right)}=\begin{cases}\frac{1}{m}\boldsymbol{\Delta}^{\left(l\right)}_{ij}+\lambda\boldsymbol{\Theta}^{\left(l\right)}_{ij}, &amp;\;\text{if}\;j\neq 0 \\ \frac{1}{m}\boldsymbol{\Delta}^{\left(l\right)}_{ij}, &amp;\;\text{if}\;j=0\end{cases}$</span><!-- Has MathJax -->
+</li>
 </ol>
+<p>因为对于一个完整的 training set， 整体的 cost function <span>$\boldsymbol{J}\left(\boldsymbol{\Theta}\right)$</span><!-- Has MathJax --> 对某一层的系数矩阵 <span>$\boldsymbol{\Theta}^{\left(l\right)}$</span><!-- Has MathJax --> 的偏导数</p>
+<span>$\frac{\partial}{\partial \Theta^{l}_{i,j}}\boldsymbol{J}\left(\boldsymbol{\Theta}\right)=\boldsymbol{D}_{ij}^{\left(l\right)} \\$</span><!-- Has MathJax -->
 
             </div>
 
