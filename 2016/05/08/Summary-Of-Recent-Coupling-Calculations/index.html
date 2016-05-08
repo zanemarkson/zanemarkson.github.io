@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="I. Current Status of IR-Control-ET ProjectRegarding the Non-Equilibrium MD and associated coupling study, we have tried many types of calculations try">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Zheng (Zane) Ma">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Summary Of Recent $\left|H_{DA}\right|^2$ Calculations"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Zane&#39;s Blog"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="/img/candybud.ciemas1.jpg" />
+    
+
+    <!-- Title -->
+    
+    <title>Summary Of Recent $\left|H_{DA}\right|^2$ Calculations - Zane&#39;s Blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+
+
+</head>
+
+<body>
+
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Zane's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">Archives</a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/candybud.ciemas1.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Summary Of Recent $\left|H_{DA}\right|^2$ Calculations</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                            Posted by Zheng (Zane) Ma || Photo By <a href='https://www.instagram.com/candybud/?hl=en'>@candybud</a> || on
+                        
+                        2016-05-08
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/NEq-MD/">#NEq-MD</a> <a href="/tags/Theoretical-Chemistry/">#Theoretical Chemistry</a> <a href="/tags/Research-Update/">#Research Update</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h4 id="I-Current-Status-of-IR-Control-ET-Project"><a href="#I-Current-Status-of-IR-Control-ET-Project" class="headerlink" title="I. Current Status of IR-Control-ET Project"></a><strong>I. Current Status of IR-Control-ET Project</strong></h4><p>Regarding the Non-Equilibrium MD and associated coupling study, we have tried many types of calculations trying to explain/reproduce the significant IR-reduce-ET effect observed in experiments. Unfortunately currently we have not successfully reproduced the IR-reduce-ET effect. Listed in this document are the calculations we tried along with the detailed method and the observations we had from these calculations. As the project evolves, some of those old calculations may seem to be obsolete, but I still list them here for future reference so that this document could serve as an update and overview of the calculations we performed in this project.</p>
+<h4 id="II-List-of-Conducted-Calculations"><a href="#II-List-of-Conducted-Calculations" class="headerlink" title="II. List of Conducted Calculations"></a><strong>II. List of Conducted Calculations</strong></h4><ol>
+<li><p><strong><em>Non-Equilibrium MD Run</em></strong></p>
+<ul>
+<li><strong>Purpose:</strong> To reproduce the IR-reduce-ET effect from full MD propagation and ensemble-averaged coupling calculations.</li>
+<li><strong>Result Summary:</strong> No significant decrease on <span>$\left&lt;\left|H_{DA}\right|^2\right&gt;$</span><!-- Has MathJax --> was observed.</li>
+<li><strong>Computational Detail:</strong> The first step of this calculation is initial configuration sampling. In this step, we used classical sampling based on MM-optimized geometry. The IR-excited vibrational modes were calculated in MM and compared with DFT/B3LYP-calculated normal modes. Then the NEq-MD and Eq-MD trajectories were propagated using GAFF force field with dichloromethane (DCM) molecules as solvent in GROMACS. After taking snapshots, the electronic structure of each snapshot was calculated using INDO/S semi-empirical method followed by Block-Diagonalization calculation for the electronic couplings.</li>
+<li><strong>Discussion:</strong> This is the calculation where we established our NEq-MD methodology framework. However, because we did not observe very significant decrease on <span>$\left&lt;\left|H_{DA}\right|^2\right&gt;$</span><!-- Has MathJax --> as experiments reported, we started to examine all the computational methods in every step of our NEq-MD methodology and study their robustness. More importantly, according to the result, at $t=0$ moment, the non-equilibrium ensemble-averaged coupling (<span>$\left&lt;\left|H_{DA}\right|^2\right&gt;_{NEq}$</span><!-- Has MathJax -->) is larger than the equilibrium ensemble-averaged coupling (<span>$\left&lt;\left|H_{DA}\right|^2\right&gt;_{Eq}$</span><!-- Has MathJax -->). This is contrast to the experimental observations. In order to find the reason why we cannot achieve decreased coupling from NEq-MD calculations, we started to examine the robustness of our methodology.</li>
+</ul>
+</li>
+<li><p><strong><em>Mode Stretching Calculation With INDO/S:</em></strong></p>
+<ul>
+<li><strong>Purpose:</strong> To Determine whether INDO/S method is correctly describing the electronic coupling between donor and acceptor under vibrational modulation of geometry.</li>
+<li><strong>Result Summary:</strong> INDO/S semi-empirical method significantly under-estimates the interaction between donor and acceptor orbitals and hence under-estimates coupling by approximately 1 order compared to DFT/B3LYP.</li>
+<li><strong>Computational Detail:</strong> In this set of calculations we stretched the GC-pair molecule geometry along MM-calculated normal mode coordinates. At each geometry, we calculate coupling using block-diagonalization based on both INDO/S-calculated and DFT/B3LYP-calculated electronic structure. Since it was found that INDO/S under-estimates the donor-acceptor coupling, we need to find another semi-empirical method which could correctly describe the coupling so that we can use it in NEq-MD run.</li>
+</ul>
+</li>
+<li><p><strong><em>Semi-Empirical Method Search:</em></strong></p>
+<ul>
+<li><strong>Purpose:</strong> To find a semi-empirical method that gives donor-acceptor coupling that is on the same order as DFT/B3LYP method gives.</li>
+<li><strong>Result Summary:</strong> DFTB/3ob-3-1 gives <span>$\left|H_{DA}\right|\sim 0.01eV$</span><!-- Has MathJax --></li>
+<li><strong>Computational Detail:</strong> We tested several semi-empirical methods, including CNDO, PM3, PM6, AM1 and DFTB at MM-optimized geometry. Among all these methods, only DFTB/3ob-3-1 gives donor-acceptor coupling that is on the same order as DFT/B3LYP-calculated coupling. Here the coupling calculation method is block-diagonalization.</li>
+</ul>
+</li>
+<li><p><strong><em>Coupling at $t=0$ Using DFTB:</em></strong></p>
+<ul>
+<li><strong>Purpose:</strong> To examine whether at $t=0$, DFTB/3ob-3-1 calculated coupling can reflect IR-reduce-ET effect.</li>
+<li><strong>Result Summary:</strong> Unfortunately there was no signficant difference between <span>$\left&lt;\left|H_{DA}\right|^2\right&gt;_{NEq}$ and $\left&lt;\left|H_{DA}\right|^2\right&gt;_{Eq}$</span><!-- Has MathJax -->.</li>
+<li><strong>Computational Detail:</strong> Based on MM-optimized geometry, the GC-pair molecule initial configuration was sampled according to MM-calculated normal mode vectors. Without any MD propagation, we directly calculated the coupling using DFTB/3ob-3-1 and block-diagonalization at $t=0$.</li>
+<li><strong>Discussion:</strong> Since changing electronic structure calculation method to be DFTB/3ob-3-1 does not reflect IR-reduce-ET effect, we decided to use DFTB/3ob-3-1 optimized geometry and corresponding normal mode vectors instead of MM-calculated ones for initial configuration sampling.</li>
+</ul>
+</li>
+<li><p><strong><em>Coupling at $t=0$ Using DFTB-calculated Geometry and Normal Modes</em></strong></p>
+<ul>
+<li><strong>Purpose:</strong> To examine at $t=0$, if DFTB/3ob-3-1 is used to optimize geometry and to calculate mode vectors, whether DFTB/3ob-3-1 calculated coupling can reflect IR-reduce-ET effect.</li>
+<li><strong>Result Summary:</strong> No IR-reduce-ET effect was observed.</li>
+<li><strong>Computational Detail:</strong> Based on DFTB/3ob-3-1 optimized geometry, the GC-pair molecule initial configuration was sampled according to DFTB/3ob-3-1 calculated normal mode vectors. Without any MD propagation, we directly calculated the coupling using DFTB/3ob-3-1 and block-diagonalization at $t=0$.</li>
+<li><strong>Discussion:</strong> In this set of calculations, more complex results were observed.</li>
+</ul>
+<ul>
+<li>The most confusing one is that if all modes were involved in the configuration sampling process, both <span>$\left&lt;\left|H_{DA}\right|^2\right&gt;_{NEq}$</span><!-- Has MathJax --> and <span>$\left&lt;\left|H_{DA}\right|^2\right&gt;_{Eq}$</span><!-- Has MathJax --> are on the order of $\sim 1.0\times 10^{-4}eV$, which is consistent with experiment. However, if we only calculate the squared coupling at DFTB/3ob-3-1 optimized geometry, this value will be $\sim 1.0\times 10^{-5}eV$. This means the combination of stretching multiple modes (in sampling process, the vibrational level of non-IR modes is sampled based on Boltzmann distribution) results in strange geometries at which the calculated geometry is very large compared to optimized geometry.</li>
+<li>In addition, the coupling calculated at optimized geometry indicates that DFTB/3ob-3-1 is not correctly describing the coupling either.</li>
+<li>In this study we realized that on vibration groud state and low-excited states, the probability distributions of mass-weighted position provided by classical sampling are significantly different from quantum mechanical descriptions. As a result, we decided to use a Wigner-like probability distribution function for sampling the position and momenta for normal modes.</li>
+</ul>
+</li>
+<li><strong><em>Mode Stretching Calculation With DFT/B3LYP:</em></strong><ul>
+<li><strong>Purpose:</strong> To determine if electronic coupling has “asymmetric” dependency on any DFT/B3LYP-calculated vibrational mode.</li>
+<li><strong>Result Summary (on-going):</strong> No such vibrational mode between $1500\sim2000cm^{-1}$ frequency range and out-of-plane H-bond modes ($600\sim800cm^{-1}$) are not responsible for IR-reduce-ET effect either.</li>
+<li><strong>Computational Detail:</strong> In this set of calculations we stretched the GC-pair molecule geometry along DFT/B3LYP-calculated normal mode coordinates. At each geometry, we calculate coupling using both orbital-based GMH method and block-diagonalization based on DFT/B3LYP-calculated electronic structure. All electronic structure calculations were carried out in PCM model where dichloromethane is the solvent using Gaussian09.</li>
+<li><strong>Discussion:</strong> It is important to realize that the “asymmetric” behavior is the key to IR-control-ET, because “symmetric” dependency of coupling on vibrational modes will only cause the ensemble-averaged coupling to be approximately the same as the coupling calculated at optimized geometry. Hence during this set of mode stretching calculation, we have been trying to identify the modes that has “asymmetric” effect on calculated coupling. We also questioned ourselves whether block-diagonalization method is correct or not for this system, and the comparison between block-diagonalization calculated and GMH calculated couplings indicate that these two methods are consistent with each other. It was also found that including solvent model could significantly alter the coupling calculation result, so here we perform DFT/B3LYP calculations with the presence of PCM solvent model.</li>
+</ul>
+</li>
+</ol>
+<h4 id="III-For-Next-Step"><a href="#III-For-Next-Step" class="headerlink" title="III. For Next Step"></a><strong>III. For Next Step</strong></h4><p>The mode stretching calculation with DFT/B3LYP is still not completed yet since there are hundreds of vibrational modes. But for the paper, I am writing them assuming no such mode could be found and it is probably more practical to make an argument that it is some other modes instead of H-bond modes that accepts vibrational energy through IVR process and subsequently affects the ET rate. </p>
+
+            </div>
+
+            <!-- Comments -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+
+
+            </div>
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="https://twitter.com/ZaneMarkson" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/zanemarkson/" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+</body>
+
+</html>
