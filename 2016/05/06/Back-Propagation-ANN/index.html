@@ -92,6 +92,10 @@ Here $\delta^{\left(L\right)}_j\;=\;a^{\left(L\rig">
                         <a href="/archives">Archives</a>
                     </li>
                 
+                    <li>
+                        <a href="http://www.zanecode.com">ZaneCode</a>
+                    </li>
+                
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -166,6 +170,9 @@ Here $\delta^{\left(L\right)}_j\;=\;a^{\left(L\rig">
 </ol>
 <p>因为对于一个完整的 training set， 整体的 cost function <span>$\boldsymbol{J}\left(\boldsymbol{\Theta}\right)$</span><!-- Has MathJax --> 对某一层的系数矩阵 <span>$\boldsymbol{\Theta}^{\left(l\right)}$</span><!-- Has MathJax --> 的偏导数</p>
 <span>$\frac{\partial}{\partial \Theta^{l}_{i,j}}\boldsymbol{J}\left(\boldsymbol{\Theta}\right)=\boldsymbol{D}_{ij}^{\left(l\right)} \\$</span><!-- Has MathJax -->
+<ol>
+<li>最后的output layer的设计直接决定了output node都代表了什么意义，比如说手写数字识别的时候如果把output node只设计为4个，然后让他们代表二进制其实也行，但这个时候的$\vec{y}$当然就也得跟着改</li>
+</ol>
 
             </div>
 
